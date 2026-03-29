@@ -19,31 +19,35 @@ const Stats = () => {
     const fullNumber = `1,000,000,${count.toString().padStart(3, '0')}`;
 
     return (
-        <section className="stats-section bg-img-2 position-relative py-5">
-            {/* Overlay is now handled by .bg-img-2::before in index.css */}
-            
-            <div className="container position-relative z-1 py-5">
-                <div className="row align-items-center mb-5">
+        <section className="stats-section bg-img-2 position-relative py-5 overflow-hidden" style={{ minHeight: '650px' }}>
+            <div className="container position-relative z-1 h-100 d-flex flex-column justify-content-between py-5" style={{ minHeight: '550px' }}>
+                {/* Top Row: Split Layout */}
+                <div className="row align-items-start text-center text-lg-start">
                     <div className="col-lg-8">
-                        <h2 className="display-2 fw-bold text-white mb-0" style={{ letterSpacing: '-2px' }}>
+                        <h2 className="text-white fw-bold mb-0 text-style-1 lh-1" style={{ fontSize: '6rem', letterSpacing: '-4px' }}>
                             {fullNumber}+
                         </h2>
                     </div>
-                    <div className="col-lg-4 d-flex align-items-center">
-                        <p className="text-white fs-5 fw-light lh-sm mb-0">
+                    <div className="col-lg-4 d-flex justify-content-lg-end pt-4 pt-lg-2">
+                        <p className="text-white fw-normal lh-sm mb-0 fs-16 fs-12-sm text-lg-start" style={{ maxWidth: '280px', fontSize: '1.15rem' }}>
                             Citizens availing public services through eGov's Digital Public Goods (DPG)
                         </p>
                     </div>
                 </div>
 
-                <div className="row mt-5 pt-3">
-                    <div className="col-md-6 border-start border-white border-2 ps-4 mb-4 mb-md-0 d-flex flex-column justify-content-center">
-                        <h2 className="text-white fw-bold display-4 mb-1">1.1 Billion+</h2>
-                        <p className="text-white fs-5 opacity-75 mb-0">Public services delivered</p>
+                {/* Bottom Row: Spread Layout */}
+                <div className="row g-4 text-center text-md-start mt-auto">
+                    <div className="col-6 col-md-auto pe-lg-5 mb-0 d-flex flex-column justify-content-end">
+                        <h3 className="text-white fw-light mb-1 fs-40 fs-30-sm" style={{ fontSize: '2.8rem' }}>
+                            <span className="me-1">1.1</span> <span className="fw-300">Billion+</span>
+                        </h3>
+                        <p className="text-white fs-16 fs-12-sm opacity-75 mb-0 fw-light">Public services delivered</p>
                     </div>
-                    <div className="col-md-6 border-start border-white border-2 ps-4 d-flex flex-column justify-content-center">
-                        <h2 className="text-white fw-bold display-4 mb-1">50+ partners</h2>
-                        <p className="text-white fs-5 opacity-75 mb-0">From technology, governments and NGOs</p>
+                    <div className="col-6 col-md-auto ps-lg-5 d-flex flex-column justify-content-end">
+                        <h3 className="text-white fw-light mb-1 fs-40 fs-30-sm" style={{ fontSize: '2.8rem' }}>
+                            <span className="me-1">50+</span> <span className="fw-300">partners</span>
+                        </h3>
+                        <p className="text-white fs-16 fs-12-sm opacity-75 mb-0 fw-light">From technology, governments and NGOs</p>
                     </div>
                 </div>
             </div>

@@ -17,24 +17,34 @@ const Supporters = () => {
             <span className="fw-bold" style={{ color: '#1a224a' }}>Supporters</span>
         </h2>
 
-        <div className="row align-items-center justify-content-center g-3 g-lg-5 grayscale-logos">
+        <div className="d-flex flex-nowrap flex-lg-wrap align-items-center justify-content-center justify-content-lg-between px-lg-5 g-2 g-lg-4 grayscale-logos overflow-hidden">
           {logos.map((logo, index) => (
-            <div key={index} className="col-6 col-md-4 col-lg-2">
+            <div key={index} className="px-2 px-lg-3">
               <img src={logo} alt={`Supporter ${index + 1}`} 
-                  className="img-fluid transition-all" 
+                  className="img-fluid transition-all supporter-logo-web supporter-logo-mobile-fix" 
                   style={{ 
                       filter: 'grayscale(100%)', 
-                      opacity: 0.6, 
-                      transition: 'all 0.3s ease',
-                      maxHeight: '60px',
+                      opacity: 0.9, 
+                      transition: 'all 0.4s ease',
+                      maxHeight: '40px', /* Small for mobile 'one line' look */
+                      maxWidth: '80px',
+                      width: 'auto',
                       objectFit: 'contain'
                   }} 
-                  onMouseOver={(e) => {e.target.style.filter = 'grayscale(0%)'; e.target.style.opacity = '1';}}
-                  onMouseOut={(e) => {e.target.style.filter = 'grayscale(100%)'; e.target.style.opacity = '0.6';}}
+                  onMouseOver={(e) => {e.target.style.filter = 'grayscale(0%)'; e.target.style.opacity = '1'; e.target.style.transform = 'scale(1.08)';}}
+                  onMouseOut={(e) => {e.target.style.filter = 'grayscale(100%)'; e.target.style.opacity = '0.9'; e.target.style.transform = 'scale(1)';}}
               />
             </div>
           ))}
         </div>
+        <style dangerouslySetInnerHTML={{ __html: `
+            @media (min-width: 768px) {
+                .supporter-logo-mobile-fix {
+                    max-height: 130px !important;
+                    max-width: 220px !important;
+                }
+            }
+        ` }} />
       </div>
     </section>
   );

@@ -92,9 +92,12 @@ const WhoWeAre = () => {
                   backgroundPosition: 'center',
                   minHeight: '450px'
                 }}>
-                {/* Premium Video Overlay (Resume Button) */}
-                <div className="video-overlay" style={{ width: '70px', height: '70px', fontSize: '2rem' }}>
-                  <i className="bi bi-pause-fill" style={{ color: '#1a224a' }}></i>
+                {/* YouTube Play Icon Overlay */}
+                <div className="youtube-play-overlay">
+                    <svg width="68" height="48" viewBox="0 0 68 48">
+                        <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,0.13,34,0,34,0S12.21,0.13,6.9,1.55 c-2.93,0.78-4.63,3.26-5.42,6.19C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+                        <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                    </svg>
                 </div>
                 {/* Video Info Overlay */}
                 <div className="position-absolute top-0 start-0 w-100 p-4 text-white" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.7), transparent)' }}>
@@ -129,8 +132,11 @@ const WhoWeAre = () => {
                     <div key={i} className="d-flex p-3 gap-3 align-items-center hover-bg-light cursor-pointer transition-all border-bottom border-light">
                       <div className="position-relative flex-shrink-0" style={{ width: '100px' }}>
                         <img src={v.img} alt={v.title} className="img-fluid rounded shadow-sm" />
-                        <div className="video-overlay" style={{ width: '30px', height: '30px', fontSize: '0.8rem' }}>
-                          <i className="bi bi-pause-fill" style={{ color: '#1a224a' }}></i>
+                        <div className="youtube-play-overlay" style={{ transform: 'translate(-50%, -50%) scale(0.6)' }}>
+                            <svg width="48" height="34" viewBox="0 0 68 48">
+                                <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,0.13,34,0,34,0S12.21,0.13,6.9,1.55 c-2.93,0.78-4.63,3.26-5.42,6.19C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+                                <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                            </svg>
                         </div>
                         <span className="position-absolute bottom-0 end-0 m-1 px-1 bg-dark text-white rounded small" style={{ fontSize: '10px' }}>{v.time}</span>
                       </div>

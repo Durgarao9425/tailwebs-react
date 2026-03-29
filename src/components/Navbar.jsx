@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [isLangOpen, setIsLangOpen] = useState(false);
+    const [selectedLang, setSelectedLang] = useState({ code: 'ENG', name: 'English', flag: 'https://egov.org.in/wp-content/plugins/gtranslate/flags/svg/en.svg' });
+    const navigate = useNavigate();
+
+    const languages = [
+        { code: 'AF', name: 'Afrikaans', flag: 'https://egov.org.in/wp-content/plugins/gtranslate/flags/svg/af.svg' },
+        { code: 'ENG', name: 'English', flag: 'https://cdn-icons-png.flaticon.com/512/197/197374.png' },
+        { code: 'FR', name: 'French', flag: 'https://egov.org.in/wp-content/plugins/gtranslate/flags/svg/fr.svg' },
+        { code: 'DE', name: 'German', flag: 'https://egov.org.in/wp-content/plugins/gtranslate/flags/svg/de.svg' },
+        { code: 'PT', name: 'Portuguese', flag: 'https://egov.org.in/wp-content/plugins/gtranslate/flags/svg/pt.svg' },
+        { code: 'RU', name: 'Russian', flag: 'https://egov.org.in/wp-content/plugins/gtranslate/flags/svg/ru.svg' }
+    ];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -13,18 +26,25 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        if (searchQuery.trim()) {
+            setShowSearch(false);
+            navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+            setSearchQuery('');
+        }
+    };
+
     // Color tokens
     const teal = '#49EDD3';
     const darkBlue = '#1a224a';
 
     const closeMenu = () => {
-        // Handle mobile collapse
         const navbarCollapse = document.getElementById('navbarNav');
         if (navbarCollapse && navbarCollapse.classList.contains('show')) {
             navbarCollapse.classList.remove('show');
         }
         
-        // Handle Bootstrap dropdowns
         const openDropdowns = document.querySelectorAll('.dropdown-menu.show, .dropdown-toggle.show');
         openDropdowns.forEach(el => {
             el.classList.remove('show');
@@ -39,24 +59,42 @@ const Navbar = () => {
 
     return (
         <header className={`fixed-top w-100 transition-all bg-white mainHeader ${isScrolled ? 'header-scrolled shadow-sm' : ''}`}>
-            {/* Top Bar - Functional Language Selector */}
             <div className={`top-bar pb-1 bg-white transition-all border-bottom ${isScrolled ? 'd-none' : ''}`}>
                 <div className="container d-flex justify-content-end align-items-center py-2" style={{ fontSize: '0.85rem' }}>
                     <a href="#" className="text-primary text-decoration-none fw-medium me-4 hover-opacity">Events</a>
                     <a href="#" className="text-primary text-decoration-none fw-medium me-4 hover-opacity">Contact us</a>
                     
-                    <div className="dropdown">
-                        <span className="language-selector d-flex align-items-center cursor-pointer fw-medium dropdown-toggle nav-link p-0 text-primary no-arrow" 
-                              id="topLangDropdown" data-bs-toggle="dropdown">
-                             <img src="https://egov.org.in/wp-content/plugins/gtranslate/flags/svg/en.svg" 
-                                  alt="UK Flag" style={{ width: '20px', marginRight: '6px' }} />
-                             ENG
-                        </span>
-                        <ul className="dropdown-menu dropdown-menu-end border-0 shadow-lg mt-2 rounded-0 border-top-teal overflow-hidden text-start" aria-labelledby="topLangDropdown">
-                            <li><a className="dropdown-item py-2 px-3 fw-bold active" href="#"><span className="flag me-2">🇬🇧</span> English</a></li>
-                            <li><a className="dropdown-item py-2 px-3 fw-normal" href="#"><span className="flag me-2">🇿🇦</span> Afrikaans</a></li>
-                            <li><a className="dropdown-item py-2 px-3 fw-normal" href="#"><span className="flag me-2">🇫🇷</span> French</a></li>
-                        </ul>
+                    <div className="dropdown custom-lang-dropdown position-relative">
+                        <div className="language-selector d-flex align-items-center cursor-pointer fw-medium text-primary py-1" 
+                               onClick={(e) => { e.stopPropagation(); setIsLangOpen(!isLangOpen); }}>
+                             <img src={selectedLang.flag} alt="Flag" style={{ width: '20px', marginRight: '6px' }} />
+                             {selectedLang.code}
+                             <i className={`bi bi-chevron-down ms-1 transition-all ${isLangOpen ? 'rotate-180' : ''}`} style={{ fontSize: '10px' }}></i>
+                        </div>
+                        {isLangOpen && (
+                            <ul className="dropdown-menu dropdown-menu-end border shadow-lg mt-2 rounded-3 text-start d-block" 
+                                style={{ 
+                                    position: 'absolute', 
+                                    right: 0, 
+                                    minWidth: '160px', 
+                                    top: '100%', 
+                                    zIndex: 9999, 
+                                    backgroundColor: 'white',
+                                    border: '1px solid #ddd',
+                                    opacity: 1,
+                                    visibility: 'visible',
+                                    transform: 'none'
+                                }}>
+                                {languages.map((lang) => (
+                                    <li key={lang.code}>
+                                        <div className="dropdown-item py-2 px-3 fw-normal d-flex align-items-center cursor-pointer hover-bg-light" 
+                                             onClick={(e) => { e.stopPropagation(); setSelectedLang(lang); setIsLangOpen(false); }}>
+                                            <img src={lang.flag} alt={lang.name} style={{ width: '20px', marginRight: '10px' }} /> {lang.name}
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
                 </div>
             </div>
@@ -92,7 +130,7 @@ const Navbar = () => {
                                     Areas of work
                                 </a>
                                 <ul className="dropdown-menu border-0 shadow-lg mt-0 py-3 rounded-0 border-top-teal">
-                                    <li><a className="dropdown-item py-2 px-4" href="#" onClick={closeMenu}>Local Governance</a></li>
+                                    <li><Link className="dropdown-item py-2 px-4" to="/local-governance" onClick={closeMenu}>Local Governance</Link></li>
                                     <li><a className="dropdown-item py-2 px-4" href="#" onClick={closeMenu}>Water & Sanitation</a></li>
                                     <li><a className="dropdown-item py-2 px-4" href="#" onClick={closeMenu}>Public Health</a></li>
                                     <li><a className="dropdown-item py-2 px-4" href="#" onClick={closeMenu}>Public Finance</a></li>
@@ -191,19 +229,22 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            {/* FULLSCREEN SEARCH OVERLAY (MATCHING REF IMAGE) */}
             {showSearch && (
                 <div className="fullscreen-search-overlay fade-in-up visible">
                     <div className="search-close-btn" onClick={() => setShowSearch(false)}>
                         <i className="bi bi-x-lg"></i>
                     </div>
                     <div className="search-input-container">
-                        <input 
-                            type="text" 
-                            className="search-input-field" 
-                            placeholder="Search..." 
-                            autoFocus 
-                        />
+                        <form onSubmit={handleSearchSubmit} className="w-100">
+                            <input 
+                                type="text" 
+                                className="search-input-field" 
+                                placeholder="Search..." 
+                                autoFocus 
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                        </form>
                     </div>
                 </div>
             )}

@@ -4,25 +4,28 @@ import Hero from './components/Hero';
 import WhoWeAre from './components/WhoWeAre';
 import Stats from './components/Stats';
 import Features from './components/Features';
+import SearchResults from './components/SearchResults';
+import LocalGovernance from './pages/LocalGovernance';
 import Testimonials from './components/Testimonials';
 import DIGIT from './components/DIGIT';
 import Products from './components/Products';
 import Supporters from './components/Supporters';
 import Footer from './components/Footer';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import VideoSection from './components/VideoSection';
 
 const ScrollToTop = () => {
-    const { pathname } = useLocation();
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        // FORCE CLOSE ALL DROPDOWNS & COLLAPSIBLE MENUS
-        const itemsToClose = document.querySelectorAll('.dropdown-menu.show, .dropdown-toggle.show, .navbar-collapse.show, .nav-item.show');
-        itemsToClose.forEach(el => {
-            el.classList.remove('show');
-            if (el.hasAttribute('aria-expanded')) el.setAttribute('aria-expanded', 'false');
-        });
-    }, [pathname]);
-    return null;
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    // FORCE CLOSE ALL DROPDOWNS & COLLAPSIBLE MENUS
+    const itemsToClose = document.querySelectorAll('.dropdown-menu.show, .dropdown-toggle.show, .navbar-collapse.show, .nav-item.show');
+    itemsToClose.forEach(el => {
+      el.classList.remove('show');
+      if (el.hasAttribute('aria-expanded')) el.setAttribute('aria-expanded', 'false');
+    });
+  }, [pathname]);
+  return null;
 };
 
 const Home = () => {
@@ -64,24 +67,26 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/who-we-are" element={<WhoWeAre />} />
+            <Route path="/search" element={<SearchResults />} />
+            <Route path="/local-governance" element={<LocalGovernance />} />
           </Routes>
         </main>
         <Footer />
-        
-        <a 
-          href="#" 
-          onClick={(e) => { e.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'}); }}
-          className="d-flex align-items-center justify-content-center transition-all hover-opacity shadow" 
+
+        <a
+          href="#"
+          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          className="d-flex align-items-center justify-content-center transition-all hover-opacity shadow"
           style={{
-            width: '40px', 
-            height: '40px', 
-            backgroundColor: '#1a224a', 
-            color: 'white', 
-            textDecoration: 'none', 
-            position: 'fixed', 
-            bottom: '25px', 
-            right: '25px', 
-            zIndex: 1000, 
+            width: '40px',
+            height: '40px',
+            backgroundColor: '#1a224a',
+            color: 'white',
+            textDecoration: 'none',
+            position: 'fixed',
+            bottom: '25px',
+            right: '25px',
+            zIndex: 1000,
             borderRadius: '4px'
           }}
         >

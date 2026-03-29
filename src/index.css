@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 :root {
   --primary-blue: #0d6efd;
@@ -47,6 +47,10 @@ h6,
 /* Animations & Transitions */
 .transition-all {
   transition: all var(--transition-speed) ease-in-out;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
 }
 
 .hover-scale {
@@ -225,6 +229,9 @@ h6,
 
 /* Mobile-Specific Navbar Items */
 @media (max-width: 991px) {
+  .hero-bg-img {
+    display: none;
+  }
   .mega-menu-content {
     position: relative;
     display: none;
@@ -700,6 +707,12 @@ h6,
   background-repeat: no-repeat;
 }
 
+@media (max-width: 991px) {
+  .bg-img-11 {
+    background-image: none !important; /* Prevent double image on mobile */
+  }
+}
+
 .bg-img-2 {
   background-image: url('https://egov.org.in/wp-content/themes/egov/assets/images/home-2sec.jpeg');
   background-size: cover;
@@ -767,4 +780,87 @@ h6,
 
 .search-close-btn:hover {
   transform: rotate(90deg);
+}
+
+/* Infinite Logo Ticker */
+.logo-ticker-container {
+  overflow: hidden;
+  padding: 40px 0;
+  background: white;
+  white-space: nowrap;
+  position: relative;
+}
+
+.logo-ticker-container::before,
+.logo-ticker-container::after {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+}
+
+.logo-ticker-container::before {
+  left: 0;
+  background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.logo-ticker-container::after {
+  right: 0;
+  background: linear-gradient(to left, white 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.logo-ticker-track {
+  display: flex;
+  width: calc(250px * 20);
+  animation: logo-scroll 40s linear infinite;
+}
+
+.logo-ticker-track:hover {
+  animation-play-state: paused;
+}
+
+.logo-ticker-item {
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-ticker-item img {
+  max-height: 40px;
+  max-width: 150px;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.logo-ticker-item img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+@keyframes logo-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-250px * 10)); }
+}
+
+/* Red YouTube Play Button Styling */
+.youtube-play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.youtube-play-overlay:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.youtube-play-overlay svg {
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
 }
