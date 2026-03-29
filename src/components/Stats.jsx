@@ -19,9 +19,8 @@ const Stats = () => {
     const fullNumber = `1,000,000,${count.toString().padStart(3, '0')}`;
 
     return (
-        <section className="stats-section position-relative py-5">
-            {/* Dark Overlay over the background image */}
-            <div className="position-absolute w-100 h-100 start-0 top-0 z-0 bg-dark opacity-75"></div>
+        <section className="stats-section bg-img-2 position-relative py-5">
+            {/* Overlay is now handled by .bg-img-2::before in index.css */}
             
             <div className="container position-relative z-1 py-5">
                 <div className="row align-items-center mb-5">

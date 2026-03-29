@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [showSearch, setShowSearch] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -180,13 +181,32 @@ const Navbar = () => {
                                     <li><a className="dropdown-item py-2 px-4" href="#" onClick={closeMenu}>Newsletters</a></li>
                                 </ul>
                             </li>
-                            <li className="nav-item ms-lg-3 d-none d-lg-flex align-items-center ps-3">
-                                <i className="bi bi-search cursor-pointer fs-5" style={{ color: 'black', fontWeight: '800' }}></i>
+                            <li className="nav-item ms-lg-3 d-none d-lg-flex align-items-center ps-3 position-relative">
+                                <i className="bi bi-search cursor-pointer fs-5" 
+                                   onClick={() => setShowSearch(true)}
+                                   style={{ color: 'black', fontWeight: '800' }}></i>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
+
+            {/* FULLSCREEN SEARCH OVERLAY (MATCHING REF IMAGE) */}
+            {showSearch && (
+                <div className="fullscreen-search-overlay fade-in-up visible">
+                    <div className="search-close-btn" onClick={() => setShowSearch(false)}>
+                        <i className="bi bi-x-lg"></i>
+                    </div>
+                    <div className="search-input-container">
+                        <input 
+                            type="text" 
+                            className="search-input-field" 
+                            placeholder="Search..." 
+                            autoFocus 
+                        />
+                    </div>
+                </div>
+            )}
         </header>
     );
 };

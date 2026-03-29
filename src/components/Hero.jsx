@@ -2,14 +2,7 @@ import React from 'react';
 
 const Hero = () => {
   return (
-    <section className="hero-section position-relative d-flex align-items-center pt-5 pb-0">
-      {/* Background Image (Desktop Only) */}
-      <img
-        src="https://egov-website-content.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/12/22121932/New-Home-Page-Banner-Image.png"
-        className="hero-bg-img position-absolute bottom-0 end-0 d-none d-lg-block"
-        alt="Citizens"
-      />
-
+    <section className="hero-section bg-img-11 position-relative d-flex align-items-center pt-5 pb-0">
       <div className="container position-relative z-1 pt-5 mt-4">
         <div className="row align-items-center">
           {/* Mobile Hero Image */}

@@ -34,7 +34,13 @@ body {
 }
 
 /* Typography Overrides */
-h1, h2, h3, h4, h5, h6, .text-dark {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.text-dark {
   color: var(--text-dark) !important;
 }
 
@@ -46,6 +52,7 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 .hover-scale {
   transition: transform var(--transition-speed) ease-in-out, background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
+
 .hover-scale:hover {
   transform: scale(1.05);
 }
@@ -53,14 +60,16 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 .hover-lift {
   transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
+
 .hover-lift:hover {
   transform: translateY(-8px);
-  box-shadow: 0 1rem 3rem rgba(0,0,0,.15) !important;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, .15) !important;
 }
 
 .hover-opacity {
   transition: opacity var(--transition-speed) ease;
 }
+
 .hover-opacity:hover {
   opacity: 1 !important;
 }
@@ -71,6 +80,7 @@ h1, h2, h3, h4, h5, h6, .text-dark {
   transform: translateY(30px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
+
 .fade-in-up.visible {
   opacity: 1;
   transform: translateY(0);
@@ -87,7 +97,7 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 }
 
 .mainHeader.header-scrolled {
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
   padding-top: 0 !important;
 }
 
@@ -105,7 +115,8 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 
 /* Custom Nav Dropdown Arrow (Teal) */
 .navbar-nav .dropdown-toggle::after {
-  display: none !important; /* Hide default Bootstrap caret */
+  display: none !important;
+  /* Hide default Bootstrap caret */
 }
 
 /* Custom SVG Arrow on the right */
@@ -128,7 +139,7 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 
 /* Hover Dropdowns for Desktop */
 @media (min-width: 992px) {
-  .nav-item.dropdown:hover > .dropdown-menu {
+  .nav-item.dropdown:hover>.dropdown-menu {
     display: block;
     opacity: 1;
     visibility: visible;
@@ -142,7 +153,7 @@ h1, h2, h3, h4, h5, h6, .text-dark {
     transform: translateY(10px);
     transition: all 0.3s ease;
     border: none;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 1rem 0;
     margin-top: 0;
@@ -154,7 +165,8 @@ h1, h2, h3, h4, h5, h6, .text-dark {
   }
 
   .mega-menu-content {
-    border-top: none !important; /* Remove the teal curve/line */
+    border-top: none !important;
+    /* Remove the teal curve/line */
   }
 
   .nav-link {
@@ -163,12 +175,13 @@ h1, h2, h3, h4, h5, h6, .text-dark {
   }
 
   .nav-link::after {
-    display: none !important; /* Removed bold underline as requested */
+    display: none !important;
+    /* Removed bold underline as requested */
   }
 
-  .nav-item.dropdown:hover > .nav-link,
+  .nav-item.dropdown:hover>.nav-link,
   .nav-link.active,
-  .nav-item.show > .nav-link {
+  .nav-item.show>.nav-link {
     color: var(--teal-accent) !important;
   }
 
@@ -180,7 +193,7 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 
   .nav-link:hover::after,
   .nav-link.active::after,
-  .nav-item.show > .nav-link::after {
+  .nav-item.show>.nav-link::after {
     transform: scaleX(1);
   }
 
@@ -191,14 +204,15 @@ h1, h2, h3, h4, h5, h6, .text-dark {
     transform: translateX(-50%) translateY(0);
     top: 100%;
     background: white;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     padding: 0;
     display: none;
     z-index: 1000;
     visibility: hidden;
     opacity: 0;
     transition: all 0.3s ease;
-    border-top: none !important; /* Double check removal */
+    border-top: none !important;
+    /* Double check removal */
   }
 
   .nav-item.mega-menu:hover .mega-menu-content {
@@ -222,9 +236,10 @@ h1, h2, h3, h4, h5, h6, .text-dark {
     margin-top: 5px;
   }
 
-  .nav-item.dropdown:hover > .dropdown-menu,
+  .nav-item.dropdown:hover>.dropdown-menu,
   .nav-item.mega-menu:hover .mega-menu-content {
-    display: none; /* Disable hover on mobile since we use clicks/hamburger */
+    display: none;
+    /* Disable hover on mobile since we use clicks/hamburger */
   }
 
   .nav-item.dropdown.show .dropdown-menu,
@@ -244,8 +259,15 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Scroll Reveal Base */
@@ -266,6 +288,7 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 .reveal-left {
   transform: translateX(-40px);
 }
+
 .reveal-right {
   transform: translateX(40px);
 }
@@ -273,7 +296,8 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 .dropdown-item {
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
-  color: #333 !important; /* Standard dark for menu items */
+  color: #333 !important;
+  /* Standard dark for menu items */
   font-weight: 500;
   transition: all 0.2s ease;
   border-bottom: 1px solid #f8f8f8;
@@ -291,13 +315,14 @@ h1, h2, h3, h4, h5, h6, .text-dark {
   color: var(--teal-accent) !important;
 }
 
-.dropdown-item img, .dropdown-item .flag {
+.dropdown-item img,
+.dropdown-item .flag {
   margin-right: 12px;
   font-size: 1.4rem;
 }
 
 .dropdown-menu {
-  box-shadow: 0 10px 40px rgba(0,0,0,0.12) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12) !important;
   border-radius: 12px !important;
   padding: 0 !important;
   overflow: hidden;
@@ -370,8 +395,7 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 
 /* Stats Section */
 .stats-section {
-  background: url("https://egov.org.in/wp-content/themes/egov/assets/images/home-2sec.jpeg")
-    center/cover no-repeat;
+  background: url("https://egov.org.in/wp-content/themes/egov/assets/images/home-2sec.jpeg") center/cover no-repeat;
   position: relative;
   color: white;
   min-height: 500px;
@@ -381,6 +405,7 @@ h1, h2, h3, h4, h5, h6, .text-dark {
   align-items: center;
   justify-content: center;
 }
+
 .stats-section::before {
   content: "";
   position: absolute;
@@ -397,6 +422,7 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 .feature-card {
   transition: transform var(--transition-speed) ease;
 }
+
 .feature-card:hover {
   transform: translateY(-10px);
 }
@@ -434,9 +460,11 @@ h1, h2, h3, h4, h5, h6, .text-dark {
   text-align: left;
   transition: all var(--transition-speed) ease;
 }
+
 .feature-nav-pills .btn:not(.active):hover {
   background-color: #f1f6f8 !important;
 }
+
 .feature-nav-pills .btn.active {
   background-color: var(--teal-accent) !important;
   border-color: var(--teal-accent) !important;
@@ -469,7 +497,7 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 .testimonial-card {
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
 }
 
@@ -485,6 +513,7 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 .social-icon {
   transition: all var(--transition-speed) ease;
 }
+
 .social-icon:hover {
   background-color: transparent !important;
   color: #f69322 !important;
@@ -517,7 +546,8 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 }
 
 .product-card .card-body {
-  background-color: #f1f9fe !important; /* Light blue from ref image 3 */
+  background-color: #f1f9fe !important;
+  /* Light blue from ref image 3 */
   padding: 2rem 1.5rem !important;
   border-radius: 0 0 1.5rem 1.5rem !important;
 }
@@ -560,19 +590,22 @@ h1, h2, h3, h4, h5, h6, .text-dark {
   transform: translate(-50%, -50%);
   width: 55px;
   height: 55px;
-  background: white; /* Match ref image white circle */
+  background: white;
+  /* Match ref image white circle */
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1a224a; /* Dark for play button */
+  color: #1a224a;
+  /* Dark for play button */
   font-size: 1.6rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .video-overlay i.bi-pause-fill {
-  color: #dc3545 !important; /* Red for pause bars */
+  color: #dc3545 !important;
+  /* Red for pause bars */
 }
 
 .product-card:hover .video-overlay {
@@ -587,7 +620,7 @@ h1, h2, h3, h4, h5, h6, .text-dark {
   padding: 5px 12px !important;
   font-weight: 500 !important;
   font-size: 0.75rem !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 .badge-price {
@@ -610,7 +643,8 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 
 @media (max-width: 768px) {
   .hero-buttons {
-    flex-direction: row !important; /* Force side-by-side */
+    flex-direction: row !important;
+    /* Force side-by-side */
     flex-wrap: nowrap !important;
     width: 100%;
     gap: 10px !important;
@@ -647,6 +681,90 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 }
 
 .feature-card {
-  height: 440px; /* Default desktop height */
+  height: 440px;
+  /* Default desktop height */
   transition: all 0.3s ease;
+}
+
+@media (min-width: 922px) {
+  .site-content .ast-container {
+    display: block;
+  }
+}
+
+.bg-img-11 {
+  background-image: url('https://egov-website-content.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/12/22121932/New-Home-Page-Banner-Image.png');
+  background-size: 80%;
+  background-position: right;
+  position: relative;
+  background-repeat: no-repeat;
+}
+
+.bg-img-2 {
+  background-image: url('https://egov.org.in/wp-content/themes/egov/assets/images/home-2sec.jpeg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.bg-img-2::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* Slightly lighter uniform shade to match premium reference */
+  z-index: 1;
+}
+
+/* Fullscreen Search Overlay Styles */
+.fullscreen-search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+.search-input-container {
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  text-align: center;
+}
+
+.search-input-field {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  width: 100%;
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 300;
+  padding: 10px 0;
+  outline: none;
+  text-align: center;
+}
+
+.search-input-field::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-close-btn {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.search-close-btn:hover {
+  transform: rotate(90deg);
 }
